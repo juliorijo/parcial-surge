@@ -7,7 +7,7 @@ Repositorio: https://github.com/juliorijo/parcial-surge
 Dominio previsto: https://juliorijo-parcial-surge.surge.sh
 
 **El dominio previsto no confirma que el sitio este publicado.** El primer
-despliegue necesita una cuenta de Surge y los secrets descritos abajo.
+despliegue necesita una cuenta de Surge y el secret descrito abajo.
 
 ## Archivos
 
@@ -26,17 +26,16 @@ No publica el repositorio, las dependencias, el README ni las credenciales.
 3. Ejecutar `npx --no-install surge token`. Copiar el token directamente
    al secret de GitHub, sin guardarlo en archivos del proyecto.
 4. En el repositorio, abrir **Settings > Secrets and variables > Actions >
-   New repository secret** y crear:
-   - `SURGE_LOGIN`: correo utilizado para iniciar sesion en Surge.
-   - `SURGE_TOKEN`: token obtenido en el paso anterior.
+   New repository secret** y crear `SURGE_TOKEN` con el token obtenido
+   en el paso anterior. Surge autentica el despliegue usando solo ese token.
 5. En **Actions > Desplegar en Surge > Run workflow**, ejecutar el workflow
    sobre `main`. Los siguientes pushes lo ejecutaran automaticamente.
 6. Comprobar que el job `deploy` termina correctamente y abrir el dominio
    previsto para verificar que muestra esta pagina.
 
 No escribir tokens en el YAML, argumentos de comandos, commits o capturas.
-GitHub entrega los secrets como variables de entorno durante el despliegue.
-Si falta alguno, el workflow falla con un mensaje explicito.
+GitHub entrega el secret como variable de entorno durante el despliegue.
+Si falta, el workflow falla con un mensaje explicito.
 
 ## Probar un cambio
 

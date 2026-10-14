@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
       SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       SURGE_DOMAIN: juliorijo-parcial-surge.surge.sh
     steps:
@@ -30,11 +29,11 @@ jobs:
           node-version: '24'
           cache: npm
 
-      - name: Verificar secrets
+      - name: Verificar secret
         shell: bash
         run: |
-          if [ -z "$SURGE_LOGIN" ] || [ -z "$SURGE_TOKEN" ]; then
-            echo "::error::Configura SURGE_LOGIN y SURGE_TOKEN en Settings > Secrets and variables > Actions."
+          if [ -z "$SURGE_TOKEN" ]; then
+            echo "::error::Configura SURGE_TOKEN en Settings > Secrets and variables > Actions."
             exit 1
           fi
 

@@ -4,10 +4,11 @@ Pagina HTML en espanol con despliegue automatico al hacer push a `main`.
 
 Repositorio: https://github.com/juliorijo/parcial-surge
 
-Dominio previsto: https://juliorijo-parcial-surge.surge.sh
+Sitio publicado: https://juliorijo-parcial-surge.surge.sh
 
-**El dominio previsto no confirma que el sitio este publicado.** El primer
-despliegue necesita una cuenta de Surge y el secret descrito abajo.
+El despliegue en GitHub Actions se completo correctamente el 14 de octubre
+de 2026. El secret `SURGE_TOKEN` esta configurado en GitHub, sin incluir
+su contenido en el repositorio.
 
 ## Archivos
 
@@ -30,8 +31,8 @@ No publica el repositorio, las dependencias, el README ni las credenciales.
    en el paso anterior. Surge autentica el despliegue usando solo ese token.
 5. En **Actions > Desplegar en Surge > Run workflow**, ejecutar el workflow
    sobre `main`. Los siguientes pushes lo ejecutaran automaticamente.
-6. Comprobar que el job `deploy` termina correctamente y abrir el dominio
-   previsto para verificar que muestra esta pagina.
+6. Comprobar que el job `deploy` termina correctamente y abrir el sitio
+   para verificar que muestra esta pagina.
 
 No escribir tokens en el YAML, argumentos de comandos, commits o capturas.
 GitHub entrega el secret como variable de entorno durante el despliegue.

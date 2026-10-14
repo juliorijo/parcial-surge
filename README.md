@@ -60,3 +60,29 @@ El repositorio se crea privado por precaucion. Para entregar el parcial,
 conceder acceso al docente o cambiarlo a publico desde Settings cuando se
 autorice esa visibilidad. Solo considerar terminada la prueba de despliegue
 cuando exista una ejecucion exitosa y el sitio responda con la pagina esperada.
+
+## Practica4: Integracion continua con ntfy
+
+Esta practica utiliza el mismo repositorio, sin cambiar el despliegue en Surge.
+
+- `hola-mundo.js`: programa JavaScript que imprime `Hola mundo`.
+- `.github/workflows/alerta.yml`: ejecuta y verifica el programa, luego envia
+  una notificacion a https://ntfy.sh/devops-itla en cada push a `main`.
+
+Para ejecutar el programa localmente:
+
+```powershell
+node hola-mundo.js
+```
+
+Para probar la integracion, subir un commit a `main` y revisar en Actions
+el workflow **Practica4 - Hola mundo y notificacion**. Tambien puede ejecutarse
+manualmente desde **Run workflow**. Abrir https://ntfy.sh/devops-itla para
+ver las notificaciones.
+
+El canal de ntfy es publico y compartido: no enviar credenciales ni datos
+privados. El mensaje solo incluye el saludo, la rama y el identificador corto
+del commit. El workflow comprueba la respuesta de ntfy y falla explicitamente
+si el servicio rechaza la notificacion o devuelve un mensaje inesperado.
+
+Enlace para entregar la practica: https://github.com/juliorijo/parcial-surge

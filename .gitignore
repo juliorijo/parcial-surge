@@ -1,0 +1,7 @@
+node_modules/
+public/
+.env
+.env.*
+.netrc
+_netrc
+npm-debug.log*

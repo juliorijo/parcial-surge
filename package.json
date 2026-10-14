@@ -1,0 +1,9 @@
+{
+  "name": "parcial-surge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pagina academica con despliegue automatico mediante GitHub Actions y Surge.",
+  "devDependencies": {
+    "surge": "0.44.5"
+  }
+}

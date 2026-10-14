@@ -1,0 +1,51 @@
+name: Desplegar en Surge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: surge-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+      SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      SURGE_DOMAIN: juliorijo-parcial-surge.surge.sh
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Verificar secrets
+        shell: bash
+        run: |
+          if [ -z "$SURGE_LOGIN" ] || [ -z "$SURGE_TOKEN" ]; then
+            echo "::error::Configura SURGE_LOGIN y SURGE_TOKEN en Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Instalar Surge
+        run: npm ci --no-audit --no-fund
+
+      - name: Preparar solo la pagina publica
+        run: |
+          mkdir public
+          cp index.html public/index.html
+          test "$(find public -type f | wc -l)" -eq 1
+
+      - name: Publicar en Surge
+        run: npx --no-install surge ./public "$SURGE_DOMAIN"

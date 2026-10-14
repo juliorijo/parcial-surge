@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Parcial de integracion continua con GitHub Actions y Surge.">
+    <title>Parcial | GitHub Actions y Surge</title>
+    <style>
+      :root { color-scheme: light; font-family: system-ui, sans-serif; }
+      body { margin: 0; padding: 24px; min-height: 100vh; box-sizing: border-box; display: grid; place-items: center; background: #eef2ff; color: #172554; }
+      main { width: min(100%, 680px); box-sizing: border-box; padding: clamp(24px, 6vw, 48px); background: white; border-radius: 20px; box-shadow: 0 16px 48px #1725541a; }
+      .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dbeafe; font-size: 0.875rem; font-weight: 600; }
+      h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15; }
+      p, li { line-height: 1.7; }
+      li + li { margin-top: 8px; }
+      footer { margin-top: 32px; border-top: 1px solid #dbeafe; padding-top: 16px; font-size: 0.875rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="badge">Integraci&oacute;n continua</span>
+      <h1>GitHub Actions + Surge</h1>
+      <p>Una p&aacute;gina sencilla con despliegue autom&aacute;tico desde GitHub.</p>
+      <ol>
+        <li>El c&oacute;digo se guarda en un repositorio Git.</li>
+        <li>Cada push a la rama <strong>main</strong> ejecuta GitHub Actions.</li>
+        <li>Surge publica la p&aacute;gina usando credenciales protegidas mediante secrets.</li>
+      </ol>
+      <footer>Parcial de desarrollo web e integraci&oacute;n continua.</footer>
+    </main>
+  </body>
+</html>
